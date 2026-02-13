@@ -21,6 +21,7 @@ export interface NodeData {
   level: number;
   isExpanded?: boolean;
   isLoading?: boolean;
+  isMastered?: boolean; // Learning feature: Tracking understanding
   children?: NodeData[];
   assumptions?: string[];
   reasoning?: string;
@@ -29,9 +30,10 @@ export interface NodeData {
   why_important?: string;
   imageUrl?: string;
   sources?: Array<{ title: string; uri: string }>;
-  // New field for on-demand details
   detailedExplanation?: string;
   isElaborating?: boolean;
+  learningQuestion?: string; // Socratic learning
+  isGeneratingQuestion?: boolean;
 }
 
 export interface TreeStructure {
@@ -46,7 +48,7 @@ export interface QueryAnalysisResponse {
   isAmbiguous: boolean;
   ambiguityOptions?: string[];
   enrichment: string;
-  predictedTopics?: string[]; // For previewing what will be analyzed
+  predictedTopics?: string[];
   dataSource?: 'AI' | 'FALLBACK';
 }
 
